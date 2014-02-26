@@ -1,5 +1,8 @@
-name: translate
-description: A sample web application
+name: angular_translate
+version: 0.0.1
+description: I18n Library for AngularDart
+author: ANDO Yasushi <andyjpn@gmail.com>
+homepage: https://github.com/technohippy/angular-translate.dart
 dependencies:
-  browser: any
-  angular: any
+  browser: ">=0.9.1 <0.9.2"
+  angular: ">=0.9.7 <0.9.8"
