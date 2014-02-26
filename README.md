@@ -6,7 +6,7 @@ This project has only just begun.
 How to Use
 ----------
 
-'''dart
+```dart
 var translator = new TranslateConfig('ja');
 translator.addTranslation('en', {
   'greeting': 'Hello'
@@ -16,15 +16,15 @@ translator.addTranslation('ja', {
 });
 
 ngBootStrap(new Module()..value(TranslateConfig, translator));
-'''
+```
 
-'''html
+```html
 <h1>Translate</h1>
 
 <p>{{'greeting' | translate}}</p>
 <p><translate>greeting</translate></p>
 <p translate="greeting" />
-'''
+```
 
 Ref.
 ----
