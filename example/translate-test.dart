@@ -1,5 +1,5 @@
 import 'package:angular/angular.dart';
-import 'package:translate/translate.dart';
+import 'package:angular_translate/translate.dart';
 
 class TranslateModule extends Module {
   TranslateModule() {
