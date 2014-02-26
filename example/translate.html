@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Translate</title>
+    <link rel="stylesheet" href="translate.css">
+  </head>
+  <body>
+    <h1>Translate</h1>
+
+    <p>{{'greeting' | translate}}</p>
+    <p><translate>greeting</translate></p>
+    <p translate="greeting" />
+
+    <script type="application/dart" src="translate-test.dart"></script>
+    <script src="packages/browser/dart.js"></script>
+  </body>
+</html>
