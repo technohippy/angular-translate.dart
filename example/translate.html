@@ -9,9 +9,15 @@
   <body>
     <h1>Translate</h1>
 
+    <h2>Basic</h2>
     <p>{{'greeting' | translate}}</p>
     <p><translate>greeting</translate></p>
     <p translate="greeting" />
+
+    <h2>Variable Replacement</h2>
+    <p>{{'greetTo' | translate: {'name':'Ando'} }}</p>
+    <p><translate translate-values="{'name':'Ando'}">greetTo</translate></p>
+    <p translate="greetTo" translate-values="{'name':'Ando'}" />
 
     <script type="application/dart" src="translate-test.dart"></script>
     <script src="packages/browser/dart.js"></script>

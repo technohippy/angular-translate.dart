@@ -1,11 +1,13 @@
 part of translate;
 
 class TranslateConfig {
-  String defaultLocale;
+  String preferredLanguage;
   Map<String, Map<String, Object>> translations;
 
-  TranslateConfig([this.defaultLocale, this.translations]) {
-    if (this.defaultLocale == null) this.defaultLocale = Intl.defaultLocale;
+  final _localeSeparator = '-';
+  
+  TranslateConfig([this.preferredLanguage, this.translations]) {
+    if (this.preferredLanguage == null) this.preferredLanguage = Intl.defaultLocale;
     if (this.translations == null) this.translations = {};
   }
 
@@ -15,8 +17,15 @@ class TranslateConfig {
   }
 
   Map<String, Object> getResources([String locale]) {
-    if (locale == null) locale = this.defaultLocale;
-    return translations[locale];
+    if (locale == null) locale = this.preferredLanguage;
+    if (translations.containsKey(locale)) {
+      return translations[locale];      
+    }
+    else if (locale.contains(_localeSeparator) 
+        && translations.containsKey(locale.split(_localeSeparator)[0])) {
+      return translations[locale.split(_localeSeparator)[0]];
+    }
+    throw "resource not found: $locale";
   }
 }
 

@@ -2,11 +2,11 @@ part of translate;
 
 @NgFilter(name: 'translate')
 class TranslateFilter {
-  TranslateService translator;
+  TranslateService translate;
 
-  TranslateFilter(this.translator);
+  TranslateFilter(this.translate);
 
-  call(String key) {
-    return this.translator.translate(key);
+  call(String key, [Map<String, Object> variables = const {}]) {
+    return this.translate(key, variables);
   }
 }

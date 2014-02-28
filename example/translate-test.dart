@@ -8,12 +8,14 @@ class TranslateModule extends Module {
     type(TranslateDirective);
     type(TranslateCloakDirective);
 
-    var translateConfig = new TranslateConfig('ja');
+    var translateConfig = new TranslateConfig('ja-JP');
     translateConfig.addTranslation('en', {
-      'greeting': 'Hello'
+      'greeting': 'Hello',
+      'greetTo': 'Hello, {{name}}'
     });
     translateConfig.addTranslation('ja', {
-      'greeting': 'こんにちは'
+      'greeting': 'こんにちは',
+      'greetTo': 'こんにちは、{{name}}さん'
     });
     value(TranslateConfig, translateConfig);
   }

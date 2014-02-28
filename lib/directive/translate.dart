@@ -8,14 +8,20 @@ part of translate;
 )
 class TranslateDirective {
   final dom.Element element;
-  final TranslateService translator;
+  final TranslateService translate;
+  final Parser parser;
 
-  TranslateDirective(this.element, this.translator) {
-    if (this.element.tagName.toLowerCase() == 'translate') {
-      this.element.innerHtml = this.translator.translate(this.element.innerHtml);
+  TranslateDirective(this.element, this.translate, this.parser) {
+    String messageKey = this.element.attributes['translate'];
+    if (messageKey == null) {
+      messageKey = this.element.innerHtml;
     }
-    else {
-      this.element.innerHtml = this.translator.translate(this.element.attributes['translate']);
+    String values = this.element.attributes['translate-values'];
+    Map<String, Object> variables = {};
+    if (values != null) {
+      Expression expr = this.parser(values);
+      variables = expr.eval({});
     }
+    this.element.innerHtml = this.translate(messageKey, variables);
   }
 }
