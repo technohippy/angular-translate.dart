@@ -1,8 +1,6 @@
 angular-translate.dart
 ======================
 
-This project has only just begun.
-
 How to Use
 ----------
 
@@ -12,11 +10,17 @@ How to Use
 var translations = new TranslateConfig('ja-JP');
 translations.addTranslation('en', {
   'GREETING': 'Hello',
-  'GREET_TO': 'Hello, {{name}}'
+  'GREET_TO': 'Hello, {{name}}',
+  'NAMESPACE': {
+    'GREETING': 'How are you?'
+  }
 });
 translations.addTranslation('ja', {
   'GREETING': 'こんにちは',
-  'GREET_TO': 'こんにちは、{{name}}さん'
+  'GREET_TO': 'こんにちは、{{name}}さん',
+  'NAMESPACE': {
+    'GREETING': '元気？'
+  }
 });
 
 ngBootStrap(new Module()..value(TranslateConfig, translations));
@@ -30,6 +34,7 @@ class YourController {
   YourController(TranslateService translate) {
     String translated = translate('GREETING');
     String translatedWithVars = translate('GREET_TO', {'name':'Ando'});
+    String translatedWithNamespace = translate('NAMESPACE.GREETING');
   }
 }
 ```
@@ -46,6 +51,11 @@ class YourController {
 <p>{{'GREET_TO' | translate: {'name':'Ando'} }}</p>
 <p><translate translate-values="{'name':'Ando'}">GREET_TO</translate></p>
 <p translate="GREET_TO" translate-values="{'name':'Ando'}" />
+
+<h2>Namespace</h2>
+<p>{{'NAMESPACE.GREETING' | translate}}</p>
+<p><translate>NAMESPACE.GREETING</translate></p>
+<p translate="NAMESPACE.GREETING" />
 ```
 
 

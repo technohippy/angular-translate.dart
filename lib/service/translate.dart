@@ -6,8 +6,17 @@ class TranslateService {
 
   TranslateService(this.config, this.interpolate);
   
-  String call(String key, [Map<String, Object> variables = const {}]) {
-    String message = this.config.getResources()[key];
+  String call(String keysString, [Map<String, Object> variables = const {}]) {
+    List<String> keys = keysString.split(".");
+    String lastKey = keys.removeLast();
+    Map<String, Object> resources = this.config.getResources();
+    keys.forEach((key) {
+      resources = resources[key];
+      if (resources == null) return "";
+    });
+    String message = resources[lastKey];
+    if (message == null) return "";
+    
     // TODO: should be updated when Interpolation#expressions are released.
     List<String> params = variables.values.map((o) => o.toString()).toList();
     Interpolation interpolation = this.interpolate(message);

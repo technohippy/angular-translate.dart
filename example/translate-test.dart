@@ -10,12 +10,18 @@ class TranslateModule extends Module {
 
     var translateConfig = new TranslateConfig('ja-JP');
     translateConfig.addTranslation('en', {
-      'greeting': 'Hello',
-      'greetTo': 'Hello, {{name}}'
+      'GREETING': 'Hello',
+      'GREET_TO': 'Hello, {{name}}',
+      'NAMESPACE': {
+        'GREETING': 'How are you?'
+      }
     });
     translateConfig.addTranslation('ja', {
-      'greeting': 'こんにちは',
-      'greetTo': 'こんにちは、{{name}}さん'
+      'GREETING': 'こんにちは',
+      'GREET_TO': 'こんにちは、{{name}}さん',
+      'NAMESPACE': {
+        'GREETING': '元気？'
+      }
     });
     value(TranslateConfig, translateConfig);
   }
