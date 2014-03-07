@@ -27,9 +27,15 @@
     </dl>
 
     <h2>Namespace</h2>
-    <p>{{'NAMESPACE.GREETING' | translate}}</p>
-    <p><translate>NAMESPACE.GREETING</translate></p>
-    <p translate="NAMESPACE.GREETING"></p>
+    <dl>
+      <dt>Filter</dt><dd>{{'NAMESPACE.GREETING' | translate}}</dd>
+      <dt>innerHTML</dt><dd><translate>NAMESPACE.GREETING</translate></dd>
+      <dt>attr</dt><dd translate="NAMESPACE.GREETING"></dd>
+    </dl>
+    
+    <h2>Dynamic</h2>
+    <input ng-model="messageKey"></input><br/>
+    <p>{{ messageKey | translate }}</p>
 
     <script type="application/dart" src="translate-test.dart"></script>
     <script src="packages/browser/dart.js"></script>

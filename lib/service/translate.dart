@@ -7,6 +7,7 @@ class TranslateService {
   TranslateService(this.config, this.interpolate);
   
   String call(String keysString, [Map<String, Object> variables = const {}]) {
+    if (keysString == null) keysString = "";
     List<String> keys = keysString.split(".");
     String lastKey = keys.removeLast();
     Map<String, Object> resources = this.config.getResources();
@@ -22,7 +23,7 @@ class TranslateService {
     Interpolation interpolation = this.interpolate(message);
     if (interpolation.seperators.length != 1 
         && params.length < interpolation.seperators.length - 1) {
-      return '';
+      return "";
     }
     else {
       return interpolation(params);
