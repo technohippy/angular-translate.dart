@@ -4,7 +4,7 @@ angular-translate.dart
 How to Use
 ----------
 
-*Configure*
+### Setup Service
 
 ```dart
 var translations = new TranslateConfig('ja-JP');
@@ -26,7 +26,7 @@ translations.addTranslation('ja', {
 ngBootStrap(new Module()..value(TranslateConfig, translations));
 ```
 
-*Use in Codes*
+### Controllers
 
 ```dart
 @NgController{ /* ... */ }
@@ -39,7 +39,7 @@ class YourController {
 }
 ```
 
-*Use in Templates*
+### Filters/Directives
 
 ```html
 <h2>Basic</h2>

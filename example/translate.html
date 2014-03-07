@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html ng-app>
   <head>
     <meta charset="utf-8">
     <title>Translate</title>
@@ -8,21 +8,28 @@
   </head>
   <body>
     <h1>Translate</h1>
-
+    
+    <button ng-click="ctrl.changeLanguage('en')" translate="BUTTON_LAMG_EN"></button>
+    <button ng-click="ctrl.changeLanguage('ja')" translate="BUTTON_LAMG_JA"></button>
+    
     <h2>Basic</h2>
-    <p>{{'GREETING' | translate}}</p>
-    <p><translate>GREETING</translate></p>
-    <p translate="GREETING" />
+    <dl>
+      <dt>Filter</dt><dd>{{'GREETING' | translate}}</dd>
+      <dt>innerHTML</dt><dd><translate>GREETING</translate></dd>
+      <dt>attr</dt><dd translate="GREETING"></dd>
+    </dl>
 
     <h2>Variable Replacement</h2>
-    <p>{{'GREET_TO' | translate: {'name':'Ando'} }}</p>
-    <p><translate translate-values="{'name':'Ando'}">GREET_TO</translate></p>
-    <p translate="GREET_TO" translate-values="{'name':'Ando'}" />
+    <dl>
+      <dt>Filter</dt><dd>{{'GREET_TO' | translate: {'name':'Ando'} }}</dd>
+      <dt>innerHTML</dt><dd><translate translate-values="{'name':'Ando'}">GREET_TO</translate></dd>
+      <dt>attr</dt><dd translate="GREET_TO" translate-values="{'name':'Ando'}"></dd>
+    </dl>
 
     <h2>Namespace</h2>
     <p>{{'NAMESPACE.GREETING' | translate}}</p>
     <p><translate>NAMESPACE.GREETING</translate></p>
-    <p translate="NAMESPACE.GREETING" />
+    <p translate="NAMESPACE.GREETING"></p>
 
     <script type="application/dart" src="translate-test.dart"></script>
     <script src="packages/browser/dart.js"></script>

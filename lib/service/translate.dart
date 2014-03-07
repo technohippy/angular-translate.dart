@@ -16,7 +16,7 @@ class TranslateService {
     });
     String message = resources[lastKey];
     if (message == null) return "";
-    
+
     // TODO: should be updated when Interpolation#expressions are released.
     List<String> params = variables.values.map((o) => o.toString()).toList();
     Interpolation interpolation = this.interpolate(message);
