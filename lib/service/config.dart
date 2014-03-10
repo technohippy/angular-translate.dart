@@ -1,14 +1,34 @@
 part of translate;
 
 class TranslateConfig {
-  String preferredLanguage;
+  String _preferredLanguage;
   Map<String, Map<String, Object>> translations;
-
-  final _localeSeparator = '-';
+  TranslateStorage _storage;
+  TranslateLoader _loader;
   
-  TranslateConfig([this.preferredLanguage, this.translations]) {
-    if (this.preferredLanguage == null) this.preferredLanguage = Intl.defaultLocale;
-    if (this.translations == null) this.translations = {};
+  final _localeSeparator = '-';
+
+  TranslateConfig({preferredLanguage, translations, storage, loader}) {
+    this.translations = translations == null ? {} : translations;
+    this._loader = loader;
+    this._storage = storage;
+    if (preferredLanguage == null) {
+      if (_storage != null) {
+        this._preferredLanguage = _storage.getPreferredLanguage();
+      }
+    }
+    else {
+      this._preferredLanguage = preferredLanguage;      
+    }
+    if (this._preferredLanguage == null || this._preferredLanguage.isEmpty) {
+      this._preferredLanguage = Intl.defaultLocale == null ? 'en' : Intl.defaultLocale;
+    }
+    this._storePreferredLanguage();
+  }
+  
+  set storage(TranslateStorage storage) {
+    this._storage = storage;
+    this._storePreferredLanguage();
   }
 
   void addTranslation(locale, translation) {
@@ -17,7 +37,7 @@ class TranslateConfig {
   }
 
   Map<String, Object> getResources([String locale]) {
-    if (locale == null) locale = this.preferredLanguage;
+    if (locale == null) locale = this._preferredLanguage;
     if (translations.containsKey(locale)) {
       return translations[locale];      
     }
@@ -27,8 +47,19 @@ class TranslateConfig {
     }
     throw "resource not found: $locale";
   }
-}
-
-class _Translation {
   
+  void _storePreferredLanguage() {
+    if (this._storage != null && Intl.defaultLocale != this._preferredLanguage) {
+      this._storage.setPreferredLanguage(this.preferredLanguage);
+    }
+  }
+  
+  String get preferredLanguage {
+    return this._preferredLanguage;
+  }
+  
+  void set preferredLanguage(String preferredLanguage) {
+    this._preferredLanguage = preferredLanguage;
+    this._storePreferredLanguage();
+  }
 }

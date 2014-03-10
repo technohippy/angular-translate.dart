@@ -23,7 +23,7 @@ class TranslateModule extends Module {
     type(TranslateCloakDirective);
     type(TranslateCtrl);
 
-    var translateConfig = new TranslateConfig('ja-JP');
+    var translateConfig = new TranslateConfig(storage: new CookieStorage());
     translateConfig.addTranslation('en', {
       'BUTTON_LAMG_EN': 'English',
       'BUTTON_LAMG_JA': 'Japanese',
