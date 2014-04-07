@@ -4,6 +4,7 @@ import 'dart:html' as dom;
 import 'dart:convert';
 import 'package:intl/intl.dart';
 import 'package:angular/angular.dart';
+import 'package:angular/change_detection/change_detection.dart';
 
 part 'service/loader.dart';
 part 'service/storage.dart';

@@ -1,6 +1,5 @@
 part of translate;
 
-
 abstract class TranslateLoader {
   String load(String lang);
   

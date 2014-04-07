@@ -5,4 +5,4 @@ author: ANDO Yasushi <andyjpn@gmail.com>
 homepage: https://github.com/technohippy/angular-translate.dart
 dependencies:
   browser: ">=0.9.1 <0.9.2"
-  angular: ">=0.9.8 <0.9.9"
+  angular: ">=0.9.10 <1.0.0"

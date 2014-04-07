@@ -21,14 +21,14 @@
 
     <h2>Variable Replacement</h2>
     <dl>
-      <dt>Filter</dt><dd>{{'GREET_TO' | translate: {'name':'Ando'} }}</dd>
+      <dt>Filter</dt><dd>{{'GREET_TO' | translate: {'name':'Ando', 'lang':translateConfig.preferredLanguage} }}</dd>
       <dt>innerHTML</dt><dd><translate translate-values="{'name':'Ando'}">GREET_TO</translate></dd>
       <dt>attr</dt><dd translate="GREET_TO" translate-values="{'name':'Ando'}"></dd>
     </dl>
 
     <h2>Namespace</h2>
     <dl>
-      <dt>Filter</dt><dd>{{'NAMESPACE.GREETING' | translate}}</dd>
+      <dt>Filter</dt><dd>{{'NAMESPACE.GREETING' | translate }}</dd>
       <dt>innerHTML</dt><dd><translate>NAMESPACE.GREETING</translate></dd>
       <dt>attr</dt><dd translate="NAMESPACE.GREETING"></dd>
     </dl>

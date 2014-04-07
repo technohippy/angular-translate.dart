@@ -1,5 +1,6 @@
 import 'package:angular/angular.dart';
 import 'package:angular_translate/translate.dart';
+import 'package:intl/intl.dart';
 
 @NgController(
   selector: 'body',
@@ -7,6 +8,7 @@ import 'package:angular_translate/translate.dart';
 )
 class TranslateCtrl {
   final TranslateConfig translateConfig;
+  final dateTime = new DateTime.now();
   
   TranslateCtrl(this.translateConfig);
   
@@ -47,5 +49,7 @@ class TranslateModule extends Module {
 }
 
 main() {
+  Intl.defaultLocale = 'ja';
+//  Intl.defaultLocale = 'ja_JP';
   ngBootstrap(module: new TranslateModule()); 
 }

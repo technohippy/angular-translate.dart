@@ -14,7 +14,7 @@ class TranslateDirective {
   final TranslateConfig config;
 
   TranslateDirective(this.element, this.translate, this.parser, this.scope, this.config) {
-    this.scope.$watch(() => this.config.preferredLanguage, _translate);
+    this.scope.watch("translateConfig.preferredLanguage", (lang, _) => _translate());
   }
 
   _translate() {

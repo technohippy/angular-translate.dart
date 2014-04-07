@@ -1,10 +1,13 @@
 part of translate;
 
 class TranslateService {
-  TranslateConfig config;
-  Interpolate interpolate;
+  final TranslateConfig config;
+  final Interpolate interpolate;
+  final Scope scope;
 
-  TranslateService(this.config, this.interpolate);
+  TranslateService(this.config, this.interpolate, this.scope) {
+    this.scope.context['translateConfig'] = this.config;
+  }
   
   String call(String keysString, [Map<String, Object> variables = const {}]) {
     if (keysString == null) return "";
@@ -18,15 +21,12 @@ class TranslateService {
     String message = resources[lastKey];
     if (message == null) return "";
 
-    // TODO: should be updated when Interpolation#expressions are released.
     List<String> params = variables.values.map((o) => o.toString()).toList();
     Interpolation interpolation = this.interpolate(message);
-    if (interpolation.seperators.length != 1 
-        && params.length < interpolation.seperators.length - 1) {
-      return "";
-    }
-    else {
-      return interpolation(params);
-    }
+    return interpolation(params);
+  }
+  
+  String filter(String key, [Map<String, Object> variables]) {
+    return this(key, variables == null ? {} : variables);    
   }
 }
