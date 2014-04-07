@@ -21,8 +21,11 @@ class TranslateService {
     String message = resources[lastKey];
     if (message == null) return "";
 
-    List<String> params = variables.values.map((o) => o.toString()).toList();
     Interpolation interpolation = this.interpolate(message);
+    var params = new List<String>();
+    for (String name in interpolation.expressions) {
+      params.add(variables[name]);
+    }
     return interpolation(params);
   }
   
