@@ -1,14 +1,14 @@
 part of translate;
 
 abstract class TranslateStorage {
-  static final String _TRANSLATE_LANG = "__translate_lang__";
+  static final String _TRANSLATE_PREFERRED_LANG = "__translate_preferred_lang__";
   
   void setPreferredLanguage(String preferredLanguage) {
-    set(_TRANSLATE_LANG, preferredLanguage);
+    set(_TRANSLATE_PREFERRED_LANG, preferredLanguage);
   }
   
   String getPreferredLanguage() {
-    return get(_TRANSLATE_LANG);
+    return get(_TRANSLATE_PREFERRED_LANG);
   }
   
   void set(name, value);

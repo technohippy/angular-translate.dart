@@ -2,16 +2,19 @@ part of translate;
 
 class TranslateConfig {
   String _preferredLanguage;
+  String fallbackLanguage;
   Map<String, Map<String, Object>> translations;
   TranslateStorage _storage;
   TranslateLoader _loader;
   
   final _localeSeparator = '-';
 
-  TranslateConfig({preferredLanguage, translations, storage, loader}) {
+  TranslateConfig({preferredLanguage, fallbackLanguage, translations, storage, loader}) {
     this.translations = translations == null ? {} : translations;
     this._loader = loader;
     this._storage = storage;
+    this.fallbackLanguage = fallbackLanguage;
+    
     if (preferredLanguage == null) {
       if (_storage != null) {
         this._preferredLanguage = _storage.getPreferredLanguage();
@@ -38,14 +41,18 @@ class TranslateConfig {
 
   Map<String, Object> getResources([String locale]) {
     if (locale == null) locale = this._preferredLanguage;
-    if (translations.containsKey(locale)) {
-      return translations[locale];      
+    String verifiedLocale = Intl.verifiedLocale(locale, localeExists);
+    if (verifiedLocale == null) {
+      verifiedLocale = Intl.verifiedLocale(fallbackLanguage, localeExists);
+      if (verifiedLocale == null) {
+        throw "resource not found: $locale";
+      }
     }
-    else if (locale.contains(_localeSeparator) 
-        && translations.containsKey(locale.split(_localeSeparator)[0])) {
-      return translations[locale.split(_localeSeparator)[0]];
-    }
-    throw "resource not found: $locale";
+    return translations[verifiedLocale];
+  }
+  
+  bool localeExists(String localeName) {
+    return localeName != null && translations.containsKey(localeName);
   }
   
   void _storePreferredLanguage() {
