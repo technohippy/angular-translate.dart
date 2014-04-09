@@ -1,0 +1,9 @@
+{
+  "BUTTON_LAMG_EN": "English",
+  "BUTTON_LAMG_JA": "Japanese",
+  "GREETING": "Hello",
+  "GREET_TO": "Hello, {{name}}",
+  "NAMESPACE": {
+    "GREETING": "How are you?"
+  }
+}

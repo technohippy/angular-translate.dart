@@ -14,7 +14,7 @@
     
     <h2>Basic</h2>
     <dl>
-      <dt>Filter</dt><dd>{{'GREETING' | translate}}</dd>
+      <dt>Filter</dt><dd>{{'GREETING' | translate: {'lang':translateConfig.preferredLanguage} }}</dd>
       <dt>innerHTML</dt><dd><translate>GREETING</translate></dd>
       <dt>attr</dt><dd translate="GREETING"></dd>
     </dl>
@@ -28,7 +28,7 @@
 
     <h2>Namespace</h2>
     <dl>
-      <dt>Filter</dt><dd>{{'NAMESPACE.GREETING' | translate }}</dd>
+      <dt>Filter</dt><dd>{{'NAMESPACE.GREETING' | translate: {'lang':translateConfig.preferredLanguage} }}</dd>
       <dt>innerHTML</dt><dd><translate>NAMESPACE.GREETING</translate></dd>
       <dt>attr</dt><dd translate="NAMESPACE.GREETING"></dd>
     </dl>

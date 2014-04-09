@@ -14,6 +14,7 @@ class TranslateService {
     List<String> keys = keysString.split(".");
     String lastKey = keys.removeLast();
     Map<String, Object> resources = this.config.getResources();
+    if (resources == null) return "";
     keys.forEach((key) {
       resources = resources[key];
       if (resources == null) return "";

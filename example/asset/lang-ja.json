@@ -1,0 +1,9 @@
+{
+  "BUTTON_LAMG_EN": "英語",
+  "BUTTON_LAMG_JA": "日本語",
+  "GREETING": "こんにちは",
+  "GREET_TO": "こんにちは、{{name}}さん",
+  "NAMESPACE": {
+    "GREETING": "元気？"
+  }
+}

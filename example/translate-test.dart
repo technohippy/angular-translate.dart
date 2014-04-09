@@ -24,8 +24,10 @@ class TranslateModule extends Module {
     type(TranslateDirective);
     type(TranslateCloakDirective);
     type(TranslateCtrl);
-
+    
     var translateConfig = new TranslateConfig(storage: new CookieStorage());
+    translateConfig.loader = new StaticFileLoader(prefix: '/angular-translate.dart/example/asset/lang-', suffix: '.json');
+    /*
     translateConfig.addTranslation('en', {
       'BUTTON_LAMG_EN': 'English',
       'BUTTON_LAMG_JA': 'Japanese',
@@ -44,6 +46,7 @@ class TranslateModule extends Module {
         'GREETING': '元気？'
       }
     });
+    */
     value(TranslateConfig, translateConfig);
   }
 }
