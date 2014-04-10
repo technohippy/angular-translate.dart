@@ -50,10 +50,22 @@ class TranslateConfig {
     if (verifiedLocale == null) {
       verifiedLocale = Intl.verifiedLocale(fallbackLanguage, localeExists, onFailure: _handleLocaleError);
       if (verifiedLocale == null) {
-        throw "resource not found: $locale";
+        throw new ArgumentError("resource not found: $locale");
       }
     }
     return translations[verifiedLocale];
+  }
+  
+  void refresh([String lang = null]) {
+    if (_loader == null) {
+      throw new StateError("no loader");
+    }
+    if (lang == null) {
+      translations.clear();
+    }
+    else {
+      translations.remove(lang);
+    }
   }
   
   void _handleLocaleError(String lang) {
