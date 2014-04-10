@@ -15,15 +15,17 @@ translations.addTranslation('en', {
     'GREETING': 'How are you?'
   }
 });
-translations.addTranslation('ja', {
-  'GREETING': 'こんにちは',
-  'GREET_TO': 'こんにちは、{{name}}さん',
-  'NAMESPACE': {
-    'GREETING': '元気？'
-  }
-});
+translates.loader = new StaticFileLoader(prefix:'/i18n/lang-', suffix:'.json');
 
-ngBootStrap(new Module()..value(TranslateConfig, translations));
+ngBootStrap(
+  new Module()
+  ..type(TranslateService)
+  ..type(TranslateFilter)
+  ..type(TranslateDirective)
+  ..type(TranslateCloakDirective)
+  ..type(TranslateCtrl)
+  ..value(TranslateConfig, translations)
+);
 ```
 
 ### Controllers
