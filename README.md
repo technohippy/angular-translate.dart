@@ -7,7 +7,7 @@ How to Use
 ### Setup Service
 
 ```dart
-var translations = new TranslateConfig('ja-JP');
+var translations = new TranslateConfig('en');
 translations.addTranslation('en', {
   'GREETING': 'Hello',
   'GREET_TO': 'Hello, {{name}}',
