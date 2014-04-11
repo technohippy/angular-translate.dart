@@ -15,7 +15,7 @@ translations.addTranslation('en', {
     'GREETING': 'How are you?'
   }
 });
-translates.loader = new StaticFileLoader(prefix:'/i18n/lang-', suffix:'.json');
+translations.loader = new StaticFileLoader(prefix:'/i18n/lang-', suffix:'.json');
 
 ngBootStrap(
   new Module()
